@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <h2>Add Ingredients</h2>
+    <form>
+        <div>
+            {% crsf_token %}
+            {{ form.as_p }}
+            <input class="submit" type="Submit">
+        </div>
+    </form>
+{% endblock %}

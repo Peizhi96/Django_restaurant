@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %} 
+    <h2>New Purchase</h2>
+    <form method="post">
+        <div>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div>
+                <label for="menu_item">Menu Item: </label>
+                <select id="menu_item" name="menu_item">
+                {% for menu_item in menu_items %}
+                    <option value="{{ menu_item.id }}">{{ menu_item.title }}</option>
+                </select>
+            </div>
+        </div>
+    </form>
+{% endblock %}

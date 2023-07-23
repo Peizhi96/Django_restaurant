@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Django Restaurant -- Login{% endblock %}
+{% block content %}
+    <div class="login-form">
+        <h2>Login</h2>
+        <form>
+            {% csrf_token%}
+            {{ form.as_p }}
+            <input value="Login" type="submit"/>
+        </form>
+    </div>
+        
+{% endblock %}

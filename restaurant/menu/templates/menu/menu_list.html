@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Django Restaurant{% endblock %}
+{% block head %}
+{% endblock %}
+{% block content %}
+    <h2>Menu</h2>
+    <p><a href="{% url 'add_menu_item' %}">Add New Item</a></p>
+    <p><a href="{% url 'add_recipe_requirement' %}">Add Recipe Requirement</a></p>
+    </hr>
+    <ul>
+    {% for menu_item in object_list %}
+        <li>
+            <div class="menu-item-header">
+                <div class="menu-item-title">{{ menu_item.title }}</div>
+                <div class="menu-item-price">{{ menu_item.price }}</div>
+            </div>
+            <ul class="menu-item-ingredients">
+                {% for recipe_requirement in menu_item.reciperequirement_set.all %}
+                <li>{{ recipe_requirement.quantity }} {{ recipe_requirement.ingredient.unit }} {{ recipe_requirement.ingredient.name }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+    
+{% endblock%}
